@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Direccion } from '../models/direccion';
+import { Direccion } from '../../../models/direccion';
+import { ActivatedRoute } from '@angular/router';
+import { DireccioncModule } from '../direccionc/direccionc.module';
+
 
 @Component({
-  selector: 'app-direccion',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './direccion.component.html',
-  styleUrl: './direccion.component.css'
+  selector: 'app-direccion-detail',
+  standalone: false,
+  //imports: [],
+  templateUrl: './direccion-detail.component.html',
+  styleUrl: './direccion-detail.component.css'
 })
-export class DireccionComponent {
-  
+export class DireccionDetailComponent {
+
   direcciones : Direccion [] = [
     {
       addressId: 0,
-      alias: "Jose",
+      alias: "Escuela",
       street: "Calle Luperon # 25",
       city: "Santiago",
       state: "Santiago",
@@ -27,7 +29,7 @@ export class DireccionComponent {
 
     {
       addressId: 1,
-      alias: "Carlos",
+      alias: "Casa",
       street: "Six ford St",
       city: "Haverhill",
       state: "Boston",
@@ -40,7 +42,7 @@ export class DireccionComponent {
 
     {
       addressId: 2,
-      alias: "Pedro",
+      alias: "Trabajo",
       street: "Estrella Sadhala # 25",
       city: "Santiago",
       state: "Santiago",
@@ -53,7 +55,7 @@ export class DireccionComponent {
 
     {
       addressId: 3,
-      alias: "Jose L",
+      alias: "Colegio",
       street: "8400 Av 100 ST",
       city: "Doral",
       state: "Miami",
@@ -66,7 +68,7 @@ export class DireccionComponent {
 
     {
       addressId: 4,
-      alias: "Raul",
+      alias: "Casa",
       street: "Los Jardines # 25",
       city: "Santiago",
       state: "Santiago",
@@ -75,7 +77,29 @@ export class DireccionComponent {
       active: false,
       createAt: new Date ("2024-05-06"),
       clienteId: 4,
+    },
+    {
+      addressId: 5,
+      alias: "Play",
+      street: "Los Jardines # 25",
+      city: "Santiago",
+      state: "Santiago",
+      zipCode: "21548",
+      country: "Chile",
+      active: false,
+      createAt: new Date ("2024-05-06"),
+      clienteId: 5,
     }
   ]
+
+  direccion: Direccion = new Direccion();
+
+  constructor(private routeManager: ActivatedRoute) {
+    this.routeManager.params.subscribe((params) => {
+      if (params['id']) {
+        this.direccion = this.direcciones.find(direcciones => direcciones.clienteId == params['id']);
+      }
+    })
+  }
 
 }

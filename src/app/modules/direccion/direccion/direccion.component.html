@@ -1,6 +1,6 @@
 <h4>Mis Direcciones</h4>
-
-<table class="table table-responsive">
+<section class="table table-responsive">
+<table class="table table-bordered border-primary">
     <thead>
         <tr>
             <th>ID</th>
@@ -13,6 +13,7 @@
             <th>Fecha de creación</th>
             <th>Cleinte ID</th>
             <th>Acciones</th>
+            <th>Ver Detalles</th>
         </tr>
     </thead>
     <body>
@@ -31,14 +32,19 @@
                 <ng-container *ngIf="item.active then botonParaActivo; else botonParaInactivo"></ng-container>
     
                 <ng-template #botonParaActivo>
-                   <button [ngClass]="{activo: item.active}">Desactivar</button>
+                    <button class="btn" [ngClass]="item.active ? 'btn-danger': 'btn-success'">Desactivar</button>
                 </ng-template>
     
                 <ng-template #botonParaInactivo>
-                    <button [ngClass]="{btn: item.active}">Activar</button>
+                    <button class="btn" [ngClass]="!item.active ? 'btn-success': 'btn-danger'">Activar</button>
                 </ng-template>
+
             </td>
+
+            <td><a class="btn btn-primary" [routerLink]="['/direcciones', item.clienteId]"
+                routerLinkActive="router-link-active">Ver</a></td>  
 
         </tr>
     </body>
 </table>
+</section>

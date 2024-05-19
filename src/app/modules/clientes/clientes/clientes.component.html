@@ -1,0 +1,59 @@
+
+<h3>Mis Clientes</h3>
+<section class="table table-responsive">
+
+<table  class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Cédula</th>
+            <th scope="col">Fecha cumpleaños</th>
+            <th scope="col">Fecha creación</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Acciones</th>
+            <th scope="col">Ver Detalle</th>
+            <th scope="col">Ver Direcciones</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of clientes">
+            <td scope="row">{{item.clienteId}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.cedula}}</td>
+            <td>{{item.birthDate}}</td>
+            <td>{{item.createAt}}</td>
+            <td>{{item.email}}</td>
+             
+         <td>
+            <ng-container *ngIf="item.active then botonParaActivo; else botonParaInactivo"></ng-container>
+
+            <ng-template #botonParaActivo>
+               <button class="btn" [ngClass]="item.active ? 'btn-danger': 'btn-success'">Desactivar</button>
+            </ng-template>
+
+            <ng-template #botonParaInactivo>
+                <button class="btn" [ngClass]="!item.active ? 'btn-success': 'btn-danger'">Activar</button>
+            </ng-template>
+        </td>
+        
+        <td><a class="btn btn-primary" [routerLink]="['/cliente', item.clienteId]"
+            routerLinkActive="router-link-active">Ver</a></td>
+           
+
+            <!-- <td><a class="btn btn-primary" [routerLink]="['/direcciones', item.clienteId]"
+                routerLinkActive="router-link-active">Ver</a></td> -->
+
+                <td><a class="btn btn-primary" [routerLink]="['/direccionc', item.clienteId]"
+                    routerLinkActive="router-link-active">Ver</a></td>  
+
+        </tr>
+        
+
+    </tbody>
+</table>
+<h3><a href="/direcciones" class="card-link">Ir a la tabla Direcciones</a></h3>
+</section>

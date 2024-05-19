@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { Cliente } from '../models/cliente';
+//import { Cliente } from '../../../models/cliente';
 import { CommonModule } from '@angular/common';
+import { Cliente } from '../../../models/cliente';
 
 
 @Component({
   selector: 'app-clientes',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
+  //imports: [],
   templateUrl: './clientes.component.html',
   styleUrl: './clientes.component.css'
 })
