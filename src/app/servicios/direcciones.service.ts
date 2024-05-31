@@ -1,22 +1,16 @@
-import { Component } from '@angular/core';
-import { DireccioncDetailComponent } from '../../direccionc/direccionc-detail/direccionc-detail.component';
-//import { DireccioncModule } from '../../../../mudules/direccionc/direccionc.module';
-import { Direccion } from '../../../../models/direccion';
+import { Injectable } from '@angular/core';
+import { Direccion } from '../models/direccion';
+import { Observable, of } from 'rxjs';
 
-
-@Component({
-  selector: 'app-direccioc',
-  standalone: false,
-  //imports: [],
-  templateUrl: './direccionc.component.html',
-  styleUrl: './direccionc.component.css'
+@Injectable({
+  providedIn: 'root'
 })
-export class DireccioncComponent {
+export class DireccionesService {
 
-  direccionc : Direccion [] = [
+  private direcciones : Direccion [] = [
     {
       addressId: 0,
-      alias: "Escuela",
+      alias: "Playa",
       street: "Calle Luperon # 25",
       city: "Santiago",
       state: "Santiago",
@@ -80,7 +74,7 @@ export class DireccioncComponent {
     },
     {
       addressId: 5,
-      alias: "Play",
+      alias: "Player$",
       street: "Los Prados # 25",
       city: "Santiago",
       state: "Santiago",
@@ -88,8 +82,22 @@ export class DireccioncComponent {
       country: "Chile",
       active: false,
       createAt: new Date ("2024-05-06"),
-      clienteId: 5,
+      clienteId: 4,
     }
   ]
 
+  constructor() { }
+  getDirecciones() : Observable<Direccion[]>{
+    return of(this.direcciones);
+  }
+
+  getDireccionByID(addressId : number) : Observable<Direccion | undefined> {
+    const direccion = this.direcciones.find(direccion => direccion.addressId === addressId);
+    return of(direccion);
+  }
+
+  getDireccionesClienteByID(addressId : number) : Observable<Direccion | undefined> {
+    const direccionesCliente = this.direcciones.find(direccionesCliente => direccionesCliente.addressId === addressId);
+    return of(direccionesCliente);
+  }
 }

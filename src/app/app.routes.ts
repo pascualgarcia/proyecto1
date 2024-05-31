@@ -11,14 +11,8 @@ export const routes: Routes = [
         path: '',
         loadChildren: () => import('./modules/direccion/direcciones.module').then(n => n.DireccionesModule)
         
-    },
-    {
-
-       path: '',
-       loadChildren: () => import('./modules/direccion/direccionc/direccionc.module').then(o => o.DireccioncModule)
-        
     }
-];
+]
 
 
 

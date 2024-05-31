@@ -1,0 +1,125 @@
+<div class="d-flex justify-content-center">
+    <form class="col-md-5" [formGroup]="formularioDireccion" (ngSubmit)="onSubmit()">
+        <!--alias-->
+        <div class="mb-3">
+          <label for="alias" class="form-label">Alias</label>
+          <input 
+             formControlName="alias"
+             type="text"
+             name="alias"
+             class="form-control"
+             aria-describedby="helpId"
+
+            />
+           <small id="helpId" class="text-danger">{{getError('alias', 'alias')}}</small>
+
+       </div>
+
+        <!--street-->
+        <div class="mb-3">
+            <label for="street" class="form-label">Calle</label>
+            <input 
+               formControlName="street"
+               type="text"
+               name="street"
+               class="form-control"
+               aria-describedby="helpId"
+  
+              />
+             <small id="helpId" class="text-danger">{{getError('street', 'Calle')}}</small>
+  
+         </div>
+
+          <!--city"-->
+        <div class="mb-3">
+            <label for="city" class="form-label">Ciudad</label>
+            <input 
+               formControlName="city"
+               type="text"
+               name="city"
+               class="form-control"
+               aria-describedby="helpId"
+  
+              />
+             <small id="helpId" class="text-danger">{{getError('city', 'ciudad')}}</small>
+  
+         </div>
+
+
+          <!--state-->
+        <div class="mb-3">
+            <label for="state" class="form-label">Estado</label>
+            <input 
+               formControlName="state"
+               type="text"
+               name="state"
+               class="form-control"
+               aria-describedby="helpId"
+  
+              />
+             <small id="helpId" class="text-danger">{{getError('state', 'Estado')}}</small>
+  
+         </div>
+
+         <!--zipCode-->
+        <div class="mb-3">
+            <label for="zipCode" class="form-label">Código Postal</label>
+            <input 
+               formControlName="zipCode"
+               type="text"
+               name="zipCode"
+               class="form-control"
+               aria-describedby="helpId"
+  
+              />
+             <small id="helpId" class="text-danger">{{getError('zipCode', 'Código postal')}}</small>
+  
+         </div>
+
+         <!--country-->
+        <div class="mb-3">
+            <label for="country" class="form-label">País</label>
+            <input 
+               formControlName="country"
+               type="text"
+               name="country"
+               class="form-control"
+               aria-describedby="helpId"
+  
+              />
+             <small id="helpId" class="text-danger">{{getError('country', 'país')}}</small>
+  
+         </div>
+
+          <!--active-->
+        <div class="mb-3">
+            <label for="active" class="form-label">Estatus</label>
+            <input 
+               formControlName="active"
+               type="checkbox"
+               name="active"
+               class="form-check-input"
+               aria-describedby="helpId"
+  
+              />
+              
+             <small id="helpId" class="text-danger">{{getError('active', 'estatus')}}</small>
+  
+         </div>
+
+          <!--createAt-->
+       <div class="mb-3">
+        <label for="createAt" class="form-label">Fecha de creado</label>
+        <input 
+           formControlName="createAt"
+           type="datetime"
+           name="createAt"
+           class="form-control"
+           aria-describedby="helpId"
+
+          />
+         <small id="helpId" class="text-danger">{{getError('createAt', 'fecha de creado')}}</small>
+         </div>
+       <button type="submit">Guardar</button>
+    </form>
+</div>

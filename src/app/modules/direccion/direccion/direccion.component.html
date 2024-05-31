@@ -16,7 +16,7 @@
             <th>Ver Detalles</th>
         </tr>
     </thead>
-    <body>
+    <body *ngIf="listaDirecciones | async as direcciones">
         <tr *ngFor="let item of direcciones">
             <td>{{item.addressId}}</td>
             <td>{{item.alias}}</td>
@@ -41,10 +41,13 @@
 
             </td>
 
-            <td><a class="btn btn-primary" [routerLink]="['/direcciones', item.clienteId]"
+            <td><a class="btn btn-primary" [routerLink]="['/direcciones', item.addressId]"
                 routerLinkActive="router-link-active">Ver</a></td>  
 
         </tr>
     </body>
 </table>
+<div>
+  <h5><a href="/clientes" class="card-link">Ir a la tabla Clientes</a></h5>
+</div>
 </section>

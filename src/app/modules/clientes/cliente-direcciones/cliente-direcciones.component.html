@@ -1,8 +1,10 @@
+
 <br>
-<div *ngFor="let direccion of direccionesc" class="card" style="width: 50rem;">
+<span *ngIf="direccionesLista | async as direccion" class="card" style="width: 50rem;">
     <div class="card-header">
       Dirección
     </div >
+    <!--<div *ngFor="let direccion of direcciones"> -->
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Alias: {{direccion.alias}}</li>
       <li class="list-group-item">Direción: {{direccion.street}}</li>
@@ -14,5 +16,8 @@
       <li class="list-group-item">Fecha de creado: {{direccion.createAt}}</li>
       <li class="list-group-item">Cliente Id: {{direccion.clienteId}}</li>
     </ul>
-  </div>
- <br>
+  <!--</div> -->
+  </span>
+ <br> 
+
+

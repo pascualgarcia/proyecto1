@@ -1,4 +1,4 @@
-
+<div *ngIf="direcc | async as direccion">
 <div class="card" style="width: 50rem;">
     <div class="card-header">
       Dirección
@@ -16,3 +16,23 @@
     </ul>
   </div>
 <br>
+</div>
+
+ <!-- <br>
+<div *ngFor="let direccion of direcciones" class="card" style="width: 50rem;">
+    <div class="card-header">
+      Dirección
+    </div >
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Alias: {{direccion.alias}}</li>
+      <li class="list-group-item">Direción: {{direccion.street}}</li>
+      <li class="list-group-item">Ciudad: {{direccion.city}}</li>
+      <li class="list-group-item">Estado: {{direccion.state}}</li>
+      <li class="list-group-item">Código postal: {{direccion.zipCode}}</li>
+      <li class="list-group-item">País: {{direccion.country}}</li>
+      <li class="list-group-item">Status: {{direccion.active}}</li>
+      <li class="list-group-item">Fecha de creado: {{direccion.createAt}}</li>
+      <li class="list-group-item">Cliente Id: {{direccion.clienteId}}</li>
+    </ul>
+  </div>
+ <br> -->
