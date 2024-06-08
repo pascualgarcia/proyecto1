@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 
 
+
 @Component({
   selector: 'app-clientes-detail',
   standalone: false,
@@ -15,7 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class ClientesDetailComponent {
 
-client : Observable<Cliente>;
+client : Cliente;
 
 
 
@@ -24,8 +25,27 @@ client : Observable<Cliente>;
   ngOnInit(){
     this.routeManager.params.subscribe((params) => {
       if (params['id']) {
-      this.client = this._servicio.getClienteByID(+params['id'])
-      }
+        this._servicio.getClienteByID(+params['id']).subscribe({
+          next: (value) =>{
+            this.client = value
+          },
+          error: (error) => {
+            console.log(error)
+          }
+      })
+    }
   })
   }
+
+  // activar(cliente : Cliente){
+  //   cliente.active = true;
+  //   this._servicio.editCliente(cliente);
+  // }
+
+  // desactivar(cliente : Cliente){
+  //   cliente.active = false;
+  //   this._servicio.editCliente(cliente);
+  // }
 }
+
+

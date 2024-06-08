@@ -15,7 +15,7 @@ import { ClientesService } from '../../../servicios/clientes.service';
 })
 export class ClientesComponent {
 
-  listaClientes : Observable<Cliente[]> 
+  listaClientes : Cliente[]; 
   
   constructor(private _servicio : ClientesService){
     
@@ -23,10 +23,15 @@ export class ClientesComponent {
   }
 
   ngOnInit(){
-    this.listaClientes = this._servicio.getClientes();
+    this._servicio.getClientes().subscribe({
+      next: (value) => {
+        this.listaClientes = value
+      },
+      error: (error) =>(
+        console.error(error)
+      )
+    })
   }
 
-  cambiarEstadoActivo(clienteId: number, nuevoEstdo: boolean): void{
-    this._servicio.updateClienteActivo(clienteId, nuevoEstdo);
-  }
+  
 }

@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
 export class DireccionDetailComponent {
 
 
-    direcc : Observable<Direccion>;
+    direcc : Direccion;
 
       constructor(private routeManager: ActivatedRoute, private _servicio : DireccionesService) {
     
@@ -25,12 +25,18 @@ export class DireccionDetailComponent {
    ngOnInit(){
     this.routeManager.params.subscribe((params) => {
       if (params['id']) {
-        this.direcc = this._servicio.getDireccionByID(+params['id']);
-       }
-   })
-
-   }
+        this._servicio.getDireccionByID(+params['id']).subscribe({
+          next: (value) =>{
+            this.direcc = value
+          },
+          error: (error) => {
+            console.log(error)
+          }
+      })
+    }
  
+})
+}
 }
 
 

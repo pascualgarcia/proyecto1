@@ -9,6 +9,8 @@ import { NgModel, ReactiveFormsModule } from '@angular/forms';
 import { DireccionesService } from '../../servicios/direcciones.service';
 import { ClienteFormComponent } from '../clientes/cliente-form/cliente-form.component';
 import { DireccionFormComponent } from './direccion-form/direccion-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ClientesService } from '../../servicios/clientes.service';
 
 
 
@@ -21,12 +23,17 @@ import { DireccionFormComponent } from './direccion-form/direccion-form.componen
   imports: [
     CommonModule,
     DireccionesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+    
     
   ],
   providers: [
     DireccionesService,
-    DireccionDetailComponent
+    DireccionDetailComponent,
+    ClientesService,
+    DireccionFormComponent
+   
   ]
 })
 export class DireccionesModule { }

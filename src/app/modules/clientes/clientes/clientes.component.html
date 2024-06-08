@@ -1,5 +1,11 @@
 
 <h3>Mis Clientes</h3>
+<div class="d-flex justify-content-end">
+    <a href="/direcciones" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" style="margin-right: 10px">Ir a Direcciones</a> 
+    <a class="btn btn-info" href="/form-cliente">Agregar cliente</a>
+</div>
+
+<br>
 <section class="table table-responsive">
 
 <table  class="table table-bordered border-primary">
@@ -13,19 +19,20 @@
             <th scope="col">Fecha creación</th>
             <th scope="col">Correo</th>
             <th scope="col">Acciones</th>
+            <th scope="col">Editar</th>
             <th scope="col">Ver Detalle</th>
             <th scope="col">Ver Direcciones</th>
             
         </tr>
     </thead>
-    <tbody *ngIf="listaClientes | async as clientes">
-        <tr *ngFor="let item of clientes">
+    <tbody *ngIf="listaClientes">
+        <tr *ngFor="let item of listaClientes">
             <td scope="row">{{item.clienteId}}</td>
             <td>{{item.name}}</td>
             <td>{{item.lastName}}</td>
             <td>{{item.cedula}}</td>
             <td>{{item.birthDate}}</td>
-            <td>{{item.createAt}}</td>
+            <td>{{item.createdAt}}</td>
             <td>{{item.email}}</td>
              
             <td>
@@ -40,8 +47,11 @@
                     <button class="btn" [ngClass]="!item.active ? 'btn-success': 'btn-danger'">Activar</button>
                 </ng-template>
             </td>
-            
-            <td><a class="btn btn-primary" [routerLink]="['/cliente', item.clienteId]"
+
+            <td><a class="btn btn-info" [routerLink]="['/form-cliente', item.clienteId]"
+                routerLinkActive="router-link-active">Editar</a></td>
+
+            <td><a class="btn btn-primary" [routerLink]="['/clientes', item.clienteId]"
                 routerLinkActive="router-link-active">Ver</a></td>
             
     
@@ -52,9 +62,5 @@
 
     </tbody>
 </table>
-<div>
-   <h5><a href="/direcciones" class="card-link">Ir a la tabla Direcciones</a></h5>
-   <h5><a href="/form-cliente" class="card-link">Ir al formulario de Clientes</a></h5>
-    <h5><a href="/form-direccion" class="card-link">Ir al formulario de direccion</a></h5>
-</div>
+
 </section>

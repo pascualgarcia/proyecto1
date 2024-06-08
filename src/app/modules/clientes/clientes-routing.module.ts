@@ -10,24 +10,26 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'clientes',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'clientes',
      component: ClientesComponent
    },
    {
-    path: 'cliente/:id',
+    path: 'form-cliente/:id',
+    component: ClienteFormComponent
+   },
+   {
+    path: 'clientes/:id',
     component: ClientesDetailComponent
    },
   {
     path: 'cliente-direcciones/:ClienteId',
-    component: ClienteDireccionesComponent
+    component:  ClientesDetailComponent
   },
-  {
-    path: 'form',
-    component: ClienteFormComponent
-   },
+
+  
 ];
 
 @NgModule({

@@ -17,19 +17,27 @@ import { Observable } from 'rxjs';
 export class ClienteDireccionesComponent {
 
 
-  direccionesLista : Observable<Direccion>
+  direccionesLista : Direccion;
     
      constructor(private routeManager : ActivatedRoute, private _servicio : DireccionesService) {
     
   } 
 
   ngOnInit(){
-    this.routeManager.params.subscribe((params) => {
-      if(params['id']){
-        this.direccionesLista = this._servicio.getDireccionesClienteByID(+params['id']);
+     this.routeManager.params.subscribe((params) => {
+        if (params['id']) {
+         
+            this._servicio.getDireccionByID(+params['id']).subscribe({
+              next: (value) =>{
+                this.direccionesLista = value
+              },
+              error: (error) => {
+                console.log(error)
+              }
+            })
        }
      })
-
+    }
   }
 
-}
+

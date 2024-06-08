@@ -1,5 +1,20 @@
 <div class="d-flex justify-content-center">
     <form class="col-md-5" [formGroup]="formularioDireccion" (ngSubmit)="onSubmit()">
+
+        <!--alias-->
+        <div class="mb-3">
+            <label for="addressId" class="form-label">ID Direccion, si es nuevo registro colocar cero</label>
+            <input 
+               formControlName="addressId"
+               type="text"
+               name="addressId"
+               class="form-control"
+               aria-describedby="helpId"
+  
+              />
+             <small id="helpId" class="text-danger">{{getError('addressId', 'Id Direccion')}}</small>
+  
+         </div>
         <!--alias-->
         <div class="mb-3">
           <label for="alias" class="form-label">Alias</label>
@@ -109,17 +124,32 @@
 
           <!--createAt-->
        <div class="mb-3">
-        <label for="createAt" class="form-label">Fecha de creado</label>
+        <label for="createdAt" class="form-label">Fecha de creado</label>
         <input 
            formControlName="createAt"
            type="datetime"
-           name="createAt"
+           name="createdAt"
            class="form-control"
            aria-describedby="helpId"
 
           />
-         <small id="helpId" class="text-danger">{{getError('createAt', 'fecha de creado')}}</small>
+         <small id="helpId" class="text-danger">{{getError('createdAt', 'fecha de creado')}}</small>
          </div>
-       <button type="submit">Guardar</button>
+
+           <!--createAt-->
+       <div class="mb-3">
+        <label for="clienteId " class="form-label">ID Cleinte</label>
+        <input 
+           formControlName="clienteId"
+           type="text"
+           name="clienteId"
+           class="form-control"
+           aria-describedby="helpId"
+
+          />
+         <small id="helpId" class="text-danger">{{getError('clienteId ', 'Id Cliente')}}</small>
+         </div>
+         <button type="submit">Guardar</button>
+         
     </form>
 </div>

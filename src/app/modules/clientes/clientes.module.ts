@@ -13,6 +13,7 @@ import { ClientesService } from '../../servicios/clientes.service';
 import { DireccionesService } from '../../servicios/direcciones.service';
 import { DireccionComponent } from '../direccion/direccion/direccion.component';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -28,11 +29,13 @@ import { ClienteFormComponent } from './cliente-form/cliente-form.component';
     DireccionesRoutingModule,
     ClientesRoutingModule,
     DireccionesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     ClientesService, 
-    DireccionesService
+    DireccionesService,
+    ClienteFormComponent
   ]
 })
 export class ClientesModule { }

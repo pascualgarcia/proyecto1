@@ -8,11 +8,11 @@ import { ClienteFormComponent } from '../clientes/cliente-form/cliente-form.comp
 import { DireccionFormComponent } from './direccion-form/direccion-form.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'direcciones',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'direcciones',
+  //   pathMatch: 'full',
+  // },
    {
     path: 'direcciones',
     component: DireccionComponent
@@ -22,13 +22,26 @@ const routes: Routes = [
     component: DireccionDetailComponent
   },
   {
-    path: 'form-cliente',
+    path: 'form-direccion/:id',
+     component: DireccionFormComponent
+   },
+  {
+     path: 'form-cliente',
     component: ClienteFormComponent
    },
+    {
+     path: 'form-cliente:id',
+     component: ClienteFormComponent
+    },
    {
     path: 'form-direccion',
-    component: DireccionFormComponent
+    component:  DireccionFormComponent
    },
+    {
+    path: 'cliente-direcciones/:ClienteId',
+    component: DireccionDetailComponent
+   },
+   
 ];
 
 @NgModule({

@@ -1,14 +1,14 @@
 
-<div *ngIf="client | async as cliente" class="card" style="width: 50rem;">
+<div *ngIf="client" class="card" style="width: 50rem;">
     <div class="card-header">
       Cliente
     </div >
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Nomnre: {{cliente.name}}</li>
-      <li class="list-group-item">Apellido: {{cliente.lastName}}</li>
-      <li class="list-group-item">Identificación: {{cliente.cedula}}</li>
-      <li class="list-group-item">Fecha de Nacimiemto: {{cliente.birthDate}}</li>
-      <li class="list-group-item">Fecha de Creado: {{cliente.createAt}}</li>
-      <li class="list-group-item">Email: {{cliente.email}}</li>
+      <li class="list-group-item">Nomnre: {{client.name}}</li>
+      <li class="list-group-item">Apellido: {{client.lastName}}</li>
+      <li class="list-group-item">Identificación: {{client.cedula}}</li>
+      <li class="list-group-item">Fecha de Nacimiemto: {{client.birthDate}}</li>
+      <li class="list-group-item">Fecha de Creado: {{client.createdAt}}</li>
+      <li class="list-group-item">Email: {{client.email}}</li>
     </ul>
   </div>

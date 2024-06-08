@@ -1,4 +1,9 @@
 <h4>Mis Direcciones</h4>
+<div class="d-flex justify-content-end">
+    <a href="/clientes" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" style="margin-right: 10px">Ir a Clientes</a> 
+    <a class="btn btn-info" href="/form-direccion">Agregar direccion</a>
+</div>
+<br>
 <section class="table table-responsive">
 <table class="table table-bordered border-primary">
     <thead>
@@ -13,11 +18,12 @@
             <th>Fecha de creación</th>
             <th>Cleinte ID</th>
             <th>Acciones</th>
+            <th>Editar</th>
             <th>Ver Detalles</th>
         </tr>
     </thead>
-    <body *ngIf="listaDirecciones | async as direcciones">
-        <tr *ngFor="let item of direcciones">
+    <body *ngIf="listaDirecciones">
+        <tr *ngFor="let item of listaDirecciones">
             <td>{{item.addressId}}</td>
             <td>{{item.alias}}</td>
             <td>{{item.street}}</td>
@@ -25,7 +31,7 @@
             <td>{{item.state}}</td>
             <td>{{item.zipCode}}</td>
             <td>{{item.country}}</td>
-            <td>{{item.createAt}}</td>
+            <td>{{item.createdAt}}</td>
             <td>{{item.clienteId}}</td>
 
             <td>
@@ -40,6 +46,8 @@
                 </ng-template>
 
             </td>
+            <td><a class="btn btn-info" [routerLink]="['/form-direccion', item.addressId]"
+                routerLinkActive="router-link-active">Editar</a></td>
 
             <td><a class="btn btn-primary" [routerLink]="['/direcciones', item.addressId]"
                 routerLinkActive="router-link-active">Ver</a></td>  
@@ -47,7 +55,5 @@
         </tr>
     </body>
 </table>
-<div>
-  <h5><a href="/clientes" class="card-link">Ir a la tabla Clientes</a></h5>
-</div>
+
 </section>
